@@ -245,7 +245,7 @@ class Transformer(nn.Module):
             next_token = torch.multinomial(probs, num_samples=1)  # Shape: (batch_size, 1)
 
             # Append the next token to tgt_input
-            tgt_input = torch.cat([tgt_input, next_token], dim=1)
+            tgt_input = torch.cat([tgt_input, next_token], dim=-1)
 
             # Check if all sequences have generated EOS_token
             if (next_token == EOS_token).all():
